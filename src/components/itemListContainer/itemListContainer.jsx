@@ -1,16 +1,29 @@
-import React from 'react';
-import './itemListContainer.css'
+// Importaciones necesarias de React y otros archivos/componentes
+import React, { useState, useEffect } from 'react';
+import { productos } from '../data/data.js'; // Asegúrate de que el path sea correcto
+import ItemList from '../itemList/itemList.jsx'; // Asegúrate de que el path sea correcto
 
-class ItemListContainer extends React.Component {
-  render() {
-    return (
-      <div>
-        <h5 className='itemlistcontent'>Estamos trabajando para tener la mejor pagina de Pilcha Posta.</h5>
-        <p className='itemlistcontent'>Hood'99 &copy; 2024</p>
-        {/* Acá va a ir la lógica para mostrar el catálogo de productos */}
-      </div>
-    );
-  }
+function ItemListContainer() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const getProducts = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(productos);
+      }, 2000);
+    });
+
+    getProducts.then((res) => {
+      setItems(res);
+    });
+  }, []);
+
+  return (
+    <div>
+      <h2>Nuestros Productos</h2>
+      <ItemList productos={items} /> {/* Aquí pasas los productos como prop a ItemList */}
+    </div>
+  );
 }
 
 export default ItemListContainer;
