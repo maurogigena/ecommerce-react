@@ -69,5 +69,19 @@ export const productos =
       "descripcion": "Zapatillas Adidas Superstar Bonega Mujer",
       "precio": 110,
       "stock": 80
+    },
+    {
+      "id": 11,
+      "nombre": "Nike AIR UpTempo",
+      "descripcion": "Zapatillas Nike Air UpTempo",
+      "precio": 150,
+      "stock": 80
+    },
+    {
+      "id": 12,
+      "nombre": "Adidas OZMILLEN",
+      "descripcion": "Zapatillas Adidas OZMILLEN 2000's",
+      "precio": 110,
+      "stock": 80
     }
 ]  

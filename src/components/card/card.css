@@ -3,9 +3,26 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+.card-container:hover {
+    transform: scale(1.07);
+    z-index: 2;
+    box-shadow: 0 2px 10px #00000082;
 }
   
 .card {
     width: 300px; 
     margin-bottom: 20px;
+    border-color: white;
+}
+
+.btn {
+    border-radius: 0%;
+    border-color: #000000;
+    background-color: #000000;
+}
+.btn:hover {
+    border-color: #646363;
+    background-color: #646363;
 }
