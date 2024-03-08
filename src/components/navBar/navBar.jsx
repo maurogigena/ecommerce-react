@@ -3,8 +3,7 @@ import brand from '../assets/brand.png';
 import { Offcanvas, Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navBar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { BsCart4 } from 'react-icons/bs';
 
 class navBar extends React.Component {
   state = {
@@ -33,13 +32,13 @@ class navBar extends React.Component {
   render() {
     return (
       <>
-        <Navbar className='navbar' bg="dark" variant="dark" expand={false}>
+        <Navbar className='navbar' bg="black" variant="dark" expand={false}>
           <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={this.handleToggle} />
           <Navbar.Brand href="/" className="mx-auto">
             <img src={brand} alt="Brand Hood'99." style={{ width: '120px' }} />
           </Navbar.Brand>
             <div className="cart-icon" onClick={this.handleCartToggle}>
-                <FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '22px' }} />
+                <BsCart4 size={25} color="white" /> 
                 <span className="badge">{this.state.cartItemCount}</span>
             </div>
           <Offcanvas show={this.state.showOffcanvas} onHide={this.handleToggle} placement="start">
