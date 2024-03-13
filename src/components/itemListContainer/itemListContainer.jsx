@@ -11,7 +11,7 @@ function ItemListContainer() {
     const getProducts = new Promise((resolve) => {
       setTimeout(() => {
         resolve(productos);
-      }, 2000); // Simula un retraso en la carga
+      }, 1500); // Simula un retraso en la carga
     });
 
     getProducts.then((res) => {
@@ -32,7 +32,7 @@ function ItemListContainer() {
 
   return (
     <div>
-      <h2 style={{ textAlign: 'center', marginTop: '45px', marginBottom: '20px' }}>Our Collection</h2>
+      <h2 style={{ textAlign: 'center', marginTop: '80px', marginBottom: '20px' }}>Our Collection</h2>
       <ItemList productos={items} /> {/* Acá paso los productos como prop a ItemList */}
     </div>
   );

@@ -28,25 +28,31 @@ function ItemDetailContainer() {
   if (!producto) return <div>Cargando...</div>;
 
   return (
-    <div className="d-flex justify-content-center mt-5">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={producto.imagen || 'https://via.placeholder.com/150'} />
-        <Card.Body>
-          <Card.Title>{producto.nombre}</Card.Title>
-          <Card.Text>
-            {producto.descripcion}
-          </Card.Text>
-          <Card.Text>
-            Precio: ${producto.precio}
-          </Card.Text>
-          <div className="d-flex justify-content-between align-items-center mb-2">
-            <Button variant="secondary" onClick={decrementar}>-</Button>
-            <span>{contador}</span>
-            <Button variant="secondary" onClick={incrementar}>+</Button>
-          </div>
-          <Button variant="primary" onClick={(e) => e.stopPropagation()}>Agregar al Carrito</Button>
-        </Card.Body>
-      </Card>
+    <div className="container" style={{ marginTop: '100px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px' }}>
+      <div className="row">
+        <div className="col-lg-6">
+          <img src={producto.imagen || 'https://via.placeholder.com/400'} alt="Producto" className="img-fluid" />
+        </div>
+        <div className="col-lg-6 mt-3 mt-lg-0">
+          <Card style={{ maxWidth: '30rem', width: '100%', justifyContent: 'center' }}>
+            <Card.Body>
+              <Card.Title style={{ fontSize: '2rem' }}>{producto.nombre}</Card.Title>
+              <Card.Text style={{ fontSize: '1.5rem' }}>
+                {producto.descripcion}
+              </Card.Text>
+              <Card.Text style={{ fontSize: '1.5rem' }}>
+                Precio: ${producto.precio}
+              </Card.Text>
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <Button variant="secondary" size="lg" onClick={decrementar}>-</Button>
+                <span style={{ fontSize: '2rem' }}>{contador}</span>
+                <Button variant="secondary" size="lg" onClick={incrementar}>+</Button>
+              </div>
+              <Button variant="primary" size="lg" onClick={(e) => e.stopPropagation()}>Agregar al Carrito</Button>
+            </Card.Body>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }
