@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap'; // Importa los componentes de contenedor, fila y columna de Bootstrap
-import ItemCard from '../card/card'; // Importa el componente de tarjeta de producto
+import { Container, Row, Col } from 'react-bootstrap';
+import ItemCard from '../card/card.jsx';
 
 function ItemList({ productos }) {
   return (

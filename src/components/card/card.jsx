@@ -1,12 +1,18 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { ButtonGroup } from 'react-bootstrap';
-import './card.css'
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import './card.css';
 
-function ItemCard({ producto, onClickSubtract, quantity, onClickAdd }) {
+function ItemCard({ producto }) {
+  const navigate = useNavigate(); // Hook para navegar
+
+  // Función para manejar el clic en la Card
+  const handleClick = () => {
+    navigate(`/producto/${producto.id}`); // Asegúrate de que `producto` tenga un `id` único
+  };
+
   return (
-    <div className='card-container'>
+    <div className='card-container' onClick={handleClick}> {/* Agrega el evento onClick aquí */}
       <Card className='card' style={{ width: '18rem' }}>
         <Card.Img variant="top" src="holder.js/100px180" />
         <Card.Body>
@@ -14,12 +20,6 @@ function ItemCard({ producto, onClickSubtract, quantity, onClickAdd }) {
           <Card.Text>
             Precio: ${producto.precio}
           </Card.Text>
-          <ButtonGroup className='mb-2' style={{ margin: '2px'}}>
-            <Button variant="secondary" onClick={onClickSubtract}>-</Button>
-            <Button variant="secondary" disabled>{quantity}1</Button>
-            <Button variant="secondary" onClick={onClickAdd}>+</Button>
-          </ButtonGroup>
-          <Button variant="primary">Agregar al Carrito</Button>
         </Card.Body>
       </Card>
     </div>

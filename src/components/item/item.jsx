@@ -1,4 +1,3 @@
-
 function Item({ id, nombre, descripcion, precio, stock }) {
     return (
       <div>

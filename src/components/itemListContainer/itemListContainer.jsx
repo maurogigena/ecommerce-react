@@ -22,7 +22,7 @@ function ItemListContainer() {
 
   if (isLoading) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      <div style={{ textAlign: 'center', marginTop: '20%' }}>
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Cargando...</span>
         </Spinner>
@@ -32,7 +32,7 @@ function ItemListContainer() {
 
   return (
     <div>
-      <h2 style={{ textAlign: 'center', marginTop: '5px' }}>Our Collection</h2>
+      <h2 style={{ textAlign: 'center', marginTop: '45px', marginBottom: '20px' }}>Our Collection</h2>
       <ItemList productos={items} /> {/* Acá paso los productos como prop a ItemList */}
     </div>
   );
