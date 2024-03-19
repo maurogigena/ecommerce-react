@@ -7,3 +7,8 @@ button.swal2-confirm.swal2-styled {
 div.swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
     font-family: "Montserrat",sans-serif;
 }
+
+.img-itemdetail {
+    display: flex;
+    justify-content: center;
+}

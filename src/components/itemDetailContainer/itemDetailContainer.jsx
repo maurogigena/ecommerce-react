@@ -42,7 +42,7 @@ function ItemDetailContainer() {
   return (
     <div className="container" style={{ marginTop: '100px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px' }}>
       <div className="row">
-        <div className="col-lg-6">
+        <div className="img-itemdetail col-lg-6">
           <img src={producto.imagen} alt="Producto" className="img-fluid" style={{ width: "70%", height: "100%" }} />
         </div>
         <div className="col-lg-6 mt-3 mt-lg-0">
@@ -54,6 +54,9 @@ function ItemDetailContainer() {
               </Card.Text>
               <Card.Text style={{ fontSize: '1.5rem' }}>
                 Precio: ${producto.precio}
+              </Card.Text>
+              <Card.Text style={{ fontSize: '1.5rem', color: producto.stock > 0 ? 'inherit' : 'red' }}>
+                {producto.stock > 0 ? 'Hay stock' : 'No hay stock'}
               </Card.Text>
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <Button variant="secondary" size="lg" onClick={decrementar}>-</Button>

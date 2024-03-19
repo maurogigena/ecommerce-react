@@ -1,6 +1,15 @@
 import collarOsito from './../assets/collar-osito.webp';
 import camisaKOTK from './../assets/camisa-kk.webp';
 import camperaTNFH from './../assets/campera-tnf-hombre.jpg';
+import piluso47 from './../assets/piluso.webp'
+import jean47 from './../assets/pantalon-para-tiendas.webp'
+import bermudaKOTK from './../assets/bermuda-kk.webp'
+import cap47 from './../assets/gorra-rosa.webp'
+import camperaKOTK from './../assets/campera-kk-mujer.webp'
+import nikeBlazer from './../assets/zapas-nike.jpeg'
+import adidasBonega from './../assets/zapas-adidas.webp'
+import nikeUpTempo from './../assets/nike-uptempo.jpeg'
+import adidasOzmillen from './../assets/adidas-ozmillen.jpeg'
 
 export const productos =
 [
@@ -30,7 +39,7 @@ export const productos =
     },
     {
       "id": 4,
-      "imagen": collarOsito,
+      "imagen": piluso47,
       "nombre": "Piluso 47st",
       "descripcion": "Piluso de jean negro gastado 47street",
       "precio": 20,
@@ -38,7 +47,7 @@ export const productos =
     },
     {
       "id": 5,
-      "imagen": collarOsito,
+      "imagen": jean47,
       "nombre": "Pantalon Jean 47st",
       "descripcion": "Jean Cargo 47street",
       "precio": 40,
@@ -46,15 +55,15 @@ export const productos =
     },
     {
       "id": 6,
-      "imagen": collarOsito,
+      "imagen": bermudaKOTK,
       "nombre": "Bermuda KOTK",
       "descripcion": "Bermuda Cargo negra King Of The Kongo",
       "precio": 35,
-      "stock": 35
+      "stock": 0
     },
     {
       "id": 7,
-      "imagen": collarOsito,
+      "imagen": cap47,
       "nombre": "Pink Cap 47st",
       "descripcion": "Gorra Rosa 47street",
       "precio": 20,
@@ -62,7 +71,7 @@ export const productos =
     },
     {
       "id": 8,
-      "imagen": collarOsito,
+      "imagen": camperaKOTK,
       "nombre": "Campera Mujer KOTK",
       "descripcion": "Campera de Corderoy King Of The Kongo mujer",
       "precio": 90,
@@ -70,7 +79,7 @@ export const productos =
     },
     {
       "id": 9,
-      "imagen": collarOsito,
+      "imagen": nikeBlazer,
       "nombre": "Nike Blazer Low",
       "descripcion": "Zapatillas Nike Blazer Low Unisex",
       "precio": 120,
@@ -78,7 +87,7 @@ export const productos =
     },
     {
       "id": 10,
-      "imagen": collarOsito,
+      "imagen": adidasBonega,
       "nombre": "Adidas Superstar Bonega",
       "descripcion": "Zapatillas Adidas Superstar Bonega Mujer",
       "precio": 110,
@@ -86,7 +95,7 @@ export const productos =
     },
     {
       "id": 11,
-      "imagen": collarOsito,
+      "imagen": nikeUpTempo,
       "nombre": "Nike AIR UpTempo",
       "descripcion": "Zapatillas Nike Air UpTempo",
       "precio": 150,
@@ -94,7 +103,7 @@ export const productos =
     },
     {
       "id": 12,
-      "imagen": collarOsito,
+      "imagen": adidasOzmillen,
       "nombre": "Adidas OZMILLEN",
       "descripcion": "Zapatillas Adidas OZMILLEN 2000's",
       "precio": 110,
