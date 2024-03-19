@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { productos } from '../data/data'; // Asegúrate de que la ruta sea correcta
+import Swal from 'sweetalert2';
+import { productos } from '../data/data'; 
 
 function ItemDetailContainer() {
   const { productoId } = useParams(); // Obtiene el id del producto de la URL
@@ -23,6 +24,16 @@ function ItemDetailContainer() {
     if (contador > 1) {
       setContador(contador - 1);
     }
+  };
+
+  // Sweetalert a la adición de productos al carrito
+  const agregarAlCarrito = () => {
+    Swal.fire({
+      title: 'Producto agregado',
+      text: `Has agregado ${contador} ${contador > 1 ? 'productos' : 'producto'} al carrito correctamente`,
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
   };
 
   if (!producto) return <div>Cargando...</div>;
@@ -48,7 +59,7 @@ function ItemDetailContainer() {
                 <span style={{ fontSize: '2rem' }}>{contador}</span>
                 <Button variant="secondary" size="lg" onClick={incrementar}>+</Button>
               </div>
-              <Button variant="primary" size="lg" onClick={(e) => e.stopPropagation()}>Agregar al Carrito</Button>
+              <Button variant="primary" size="lg" onClick={agregarAlCarrito}>Agregar al Carrito</Button>
             </Card.Body>
           </Card>
         </div>

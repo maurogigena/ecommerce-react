@@ -8,7 +8,7 @@ function ItemCard({ producto }) {
 
   // Función para manejar el clic en la Card
   const handleClick = () => {
-    navigate(`/producto/${producto.id}`); // Asegúrate de que `producto` tenga un `id` único
+    navigate(`/producto/${producto.id}`);
   };
 
   return (
@@ -16,7 +16,7 @@ function ItemCard({ producto }) {
       <Card className='card' style={{ width: '18rem' }}>
         <Card.Img variant="top" src="holder.js/100px180" />
         <Card.Body>
-          <Card.Title>{producto.nombre}</Card.Title>
+          <Card.Title style={{ fontWeight: '600' }}>{producto.nombre}</Card.Title>
           <Card.Text>
             Precio: ${producto.precio}
           </Card.Text>
