@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
-import { productos } from '../data/data'; 
+import { productos } from '../data/data';
+import './itemDetail.css';
 
 function ItemDetailContainer() {
   const { productoId } = useParams(); // Obtiene el id del producto de la URL
@@ -42,7 +43,7 @@ function ItemDetailContainer() {
     <div className="container" style={{ marginTop: '100px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px' }}>
       <div className="row">
         <div className="col-lg-6">
-          <img src={producto.imagen || 'https://via.placeholder.com/400'} alt="Producto" className="img-fluid" />
+          <img src={producto.imagen} alt="Producto" className="img-fluid" style={{ width: "70%", height: "100%" }} />
         </div>
         <div className="col-lg-6 mt-3 mt-lg-0">
           <Card style={{ maxWidth: '30rem', width: '100%', justifyContent: 'center' }}>

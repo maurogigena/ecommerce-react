@@ -8,6 +8,7 @@ import { BsPersonFill } from 'react-icons/bs';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
   state = {
@@ -60,9 +61,9 @@ class NavBar extends React.Component {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="/" onMouseOver={e => e.target.style.textDecoration = 'underline'} onMouseOut={e => e.target.style.textDecoration = 'none'}>Todos los Productos</Nav.Link>
-                <Nav.Link href="/" onMouseOver={e => e.target.style.textDecoration = 'underline'} onMouseOut={e => e.target.style.textDecoration = 'none'}>Autumn/Winter Season 2024</Nav.Link>
-                <Nav.Link href="/" onMouseOver={e => e.target.style.textDecoration = 'underline'} onMouseOut={e => e.target.style.textDecoration = 'none'}>Contacto</Nav.Link>
+                <Nav.Link as={Link} href="/" onMouseOver={e => e.target.style.textDecoration = 'underline'} onMouseOut={e => e.target.style.textDecoration = 'none'}>Todos los Productos</Nav.Link>
+                <Nav.Link as={Link} href="/" onMouseOver={e => e.target.style.textDecoration = 'underline'} onMouseOut={e => e.target.style.textDecoration = 'none'}>Autumn/Winter Season 2024</Nav.Link>
+                <Nav.Link as={Link} href="/" onMouseOver={e => e.target.style.textDecoration = 'underline'} onMouseOut={e => e.target.style.textDecoration = 'none'}>Contacto</Nav.Link>
               </Nav>
             </Offcanvas.Body>
           </Offcanvas>

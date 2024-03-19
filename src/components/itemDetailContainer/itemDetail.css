@@ -1,0 +1,9 @@
+button.swal2-confirm.swal2-styled {
+    border-radius: 0%;
+    border-color: #000000;
+    background-color: #000000;
+    padding: 10px 27px 10px 27px;
+}
+div.swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
+    font-family: "Montserrat",sans-serif;
+}
