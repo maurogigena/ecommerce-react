@@ -13,7 +13,7 @@ class App extends React.Component {
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/producto/:productoId" element={<ItemDetailContainer />} />
-            <Route path="/categoria/:idcategory" element={<ItemDetailContainer />} />
+            <Route path="/category/:idcategory" element={<ItemListContainer />} />
             <Route path='*' element={<>ERROR 404</>} />
           </Routes>
       </BrowserRouter> 

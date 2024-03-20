@@ -10,13 +10,13 @@
 .card-container:hover {
     transform: scale(0.98);
     z-index: 2;
-    box-shadow: 0 2px 10px #00000082;
+    box-shadow: 0 2px 10px #69696982;
 }
   
 .card {
     width: 300px; 
     margin-bottom: 20px;
-    border-color: white;
+    border-color: #ffffff;
 }
 
 .btn {

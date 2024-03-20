@@ -20,7 +20,7 @@ export const productos =
       "descripcion": "Collar de osito naranja 47street",
       "precio": 10,
       "stock": 50,
-      "category": "accesorios"
+      "category": "Accesorios"
     },
     {
       "id": 2,
@@ -29,16 +29,16 @@ export const productos =
       "descripcion": "Camisa manga corta King Of The Kongo celeste",
       "precio": 35,
       "stock": 50,
-      "category": "verano"
+      "category": "Verano"
     },
     {
       "id": 3,
       "imagen": camperaTNFH,
-      "nombre": "Campera the north face hombre",
+      "nombre": "Campera The North Face Hombre",
       "descripcion": "Campera The North Face hombre beige",
       "precio": 125,
       "stock": 30,
-      "category": "season2024"
+      "category": "Autum-Winter Season 2024"
     },
     {
       "id": 4,
@@ -47,7 +47,7 @@ export const productos =
       "descripcion": "Piluso de jean negro gastado 47street",
       "precio": 20,
       "stock": 20,
-      "category": "accesorios"
+      "category": "Accesorios"
     },
     {
       "id": 5,
@@ -56,7 +56,7 @@ export const productos =
       "descripcion": "Jean Cargo 47street",
       "precio": 40,
       "stock": 35,
-      "category": "season2024"
+      "category": "Autum-Winter Season 2024"
     },
     {
       "id": 6,
@@ -65,7 +65,7 @@ export const productos =
       "descripcion": "Bermuda Cargo negra King Of The Kongo",
       "precio": 35,
       "stock": 0,
-      "category": "verano"
+      "category": "Verano"
     },
     {
       "id": 7,
@@ -74,16 +74,16 @@ export const productos =
       "descripcion": "Gorra Rosa 47street",
       "precio": 20,
       "stock": 20,
-      "category": "accesorios"
+      "category": "Accesorios"
     },
     {
       "id": 8,
       "imagen": camperaKOTK,
-      "nombre": "Campera Mujer KOTK",
+      "nombre": "Campera KOTK Mujer",
       "descripcion": "Campera de Corderoy King Of The Kongo mujer",
       "precio": 90,
       "stock": 30,
-      "category": "season2024"
+      "category": "Autum-Winter Season 2024"
     },
     {
       "id": 9,
@@ -91,8 +91,8 @@ export const productos =
       "nombre": "Nike Blazer Low",
       "descripcion": "Zapatillas Nike Blazer Low Unisex",
       "precio": 120,
-      "stock": 80,
-      "category": "zapatillas"
+      "stock": 0,
+      "category": "Zapatillas"
     },
     {
       "id": 10,
@@ -101,7 +101,7 @@ export const productos =
       "descripcion": "Zapatillas Adidas Superstar Bonega Mujer",
       "precio": 110,
       "stock": 80,
-      "category": "zapatillas"
+      "category": "Zapatillas"
     },
     {
       "id": 11,
@@ -110,7 +110,7 @@ export const productos =
       "descripcion": "Zapatillas Nike Air UpTempo",
       "precio": 150,
       "stock": 80,
-      "category": "zapatillas"
+      "category": "Zapatillas"
     },
     {
       "id": 12,
@@ -119,6 +119,6 @@ export const productos =
       "descripcion": "Zapatillas Adidas OZMILLEN 2000's",
       "precio": 110,
       "stock": 80,
-      "category": "zapatillas"
+      "category": "Zapatillas"
     }
 ]  

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import { useParams } from 'react-router-dom'; // Importa useParams
+import { useParams } from 'react-router-dom';
 import { productos } from '../data/data.js';
 import ItemList from '../itemList/itemList.jsx';
 
@@ -8,28 +8,29 @@ function ItemListContainer() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Captura el parámetro de la categoría desde la URL
-  const { categoryName } = useParams();
+  const { idcategory } = useParams();
 
   useEffect(() => {
     setIsLoading(true); // Asegúrate de que el spinner se muestra al recargar los productos
     const getProducts = new Promise((resolve) => {
       setTimeout(() => {
-        if (categoryName) {
-          // Filtra los productos por categoría si categoryName existe
-          resolve(productos.filter(product => product.category === categoryName));
+        let filteredItems;
+        if (idcategory) {
+          // Filtra todos los productos que coincidan con la category
+          filteredItems = productos.filter(product => product.category === idcategory);
         } else {
-          // Si no hay categoryName, devuelve todos los productos
-          resolve(productos);
+          // Si no hay category, devuelve todos los productos
+          filteredItems = productos;
         }
-      }, 1500);
+        resolve(filteredItems);
+      }, 1300);
     });
 
     getProducts.then((res) => {
       setItems(res);
       setIsLoading(false);
     });
-  }, [categoryName]); // Añade categoryName a las dependencias de useEffect para que se actualice al cambiar
+  }, [idcategory]); 
 
   if (isLoading) {
     return (
@@ -44,9 +45,9 @@ function ItemListContainer() {
   return (
     <div>
       <h2 style={{ textAlign: 'center', marginTop: '80px', marginBottom: '20px' }}>
-        {categoryName ? `Colección de ${categoryName}` : 'Nuestra Colección'}
+        {idcategory ? `${idcategory}` : 'Nuestra Colección'}
       </h2>
-      <ItemList productos={items} /> {/* Aquí pasamos los productos (filtrados o no) como prop */}
+      <ItemList productos={items} />
     </div>
   );
 }
