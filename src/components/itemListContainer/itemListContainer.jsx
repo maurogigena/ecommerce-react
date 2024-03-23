@@ -44,7 +44,7 @@ function ItemListContainer() {
 
   return (
     <div>
-      <h2 style={{ textAlign: 'center', marginTop: '80px', marginBottom: '20px' }}>
+      <h2 style={{ textAlign: 'center', marginTop: '95px', marginBottom: '20px' }}>
         {idcategory ? `${idcategory}` : 'Nuestra Colección'}
       </h2>
       <ItemList productos={items} />

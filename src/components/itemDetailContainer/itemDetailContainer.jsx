@@ -2,19 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner'; // Importa el Spinner
 import Swal from 'sweetalert2';
 import { productos } from '../data/data';
 import './itemDetail.css';
 
 function ItemDetailContainer() {
-  const { productoId } = useParams(); // Obtiene el id del producto de la URL
+  const { productoId } = useParams();
   const [producto, setProducto] = useState(null);
   const [contador, setContador] = useState(1);
+  const [cargando, setCargando] = useState(true); // Estado para controlar la carga
 
   useEffect(() => {
-    // Busca el producto en el array basado en el ID
-    const productoEncontrado = productos.find(prod => prod.id.toString() === productoId);
-    setProducto(productoEncontrado);
+    setCargando(true); // Inicia la carga
+    setTimeout(() => {
+      const productoEncontrado = productos.find(prod => prod.id.toString() === productoId);
+      setProducto(productoEncontrado);
+      setCargando(false); // Finaliza la carga después de 2 segundos
+    }, 2000);
   }, [productoId]);
 
   const incrementar = () => {
@@ -27,7 +32,6 @@ function ItemDetailContainer() {
     }
   };
 
-  // Sweetalert a la adición de productos al carrito
   const agregarAlCarrito = () => {
     Swal.fire({
       title: 'Producto agregado',
@@ -37,10 +41,18 @@ function ItemDetailContainer() {
     });
   };
 
-  if (!producto) return <div>Cargando...</div>;
+  if (cargando) return (
+      <div style={{ textAlign: 'center', marginTop: '20%' }}>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </Spinner>
+      </div>
+  );
+
+  if (!producto) return <div>No se encontró el producto</div>;
 
   return (
-    <div className="container" style={{ marginTop: '100px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px' }}>
+    <div className="container" style={{ marginTop: '120px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px', marginBottom: '20px' }}>
       <div className="row">
         <div className="img-itemdetail col-lg-6">
           <img src={producto.imagen} alt="Producto" className="img-fluid" style={{ width: "70%", height: "100%" }} />

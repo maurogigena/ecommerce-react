@@ -8,6 +8,7 @@ import { BsPersonFill } from 'react-icons/bs';
 import MenuOffcanvas from './mainMenu.jsx';
 import CartOffcanvas from './cart.jsx';
 import LoginToast from './loginToast.jsx';
+import AdBar from './adbar.jsx';
 
 class NavBar extends React.Component {
   state = {
@@ -42,6 +43,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <>
+        <AdBar />
         <Navbar className='navbar' bg="black" variant="dark" expand={false}>
           <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={this.handleToggle} />
           <Navbar.Brand href="/" className="mx-auto">
