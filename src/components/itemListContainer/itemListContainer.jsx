@@ -34,7 +34,7 @@ function ItemListContainer() {
 
   if (isLoading) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '20%' }}>
+      <div style={{ textAlign: 'center', marginTop: '10%' }}>
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Cargando...</span>
         </Spinner>

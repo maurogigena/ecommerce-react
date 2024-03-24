@@ -1,0 +1,26 @@
+.redes {
+    color: #ffffff;
+    text-decoration: none;
+}
+.redes:hover {
+    text-decoration: underline;
+}
+.filtros:hover {
+    text-decoration: underline;
+}
+.form {
+    border-radius: 0%;
+}
+.button-form {
+    border-color: #ffffff;
+}
+.copyright {
+    margin-bottom: 0%;
+    font-size: small;
+}
+@media (max-width: 768px) {
+    .col-query {
+        padding-bottom: 20px;
+    }
+  }
+  

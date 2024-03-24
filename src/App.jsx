@@ -4,6 +4,7 @@ import ItemListContainer from './components/itemListContainer/itemListContainer.
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Footer from './components/footer/Footer.jsx'
 
 class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class App extends React.Component {
             <Route path="/category/:idcategory" element={<ItemListContainer />} />
             <Route path='*' element={<>ERROR 404</>} />
           </Routes>
+          <Footer />
       </BrowserRouter> 
     );
   }
