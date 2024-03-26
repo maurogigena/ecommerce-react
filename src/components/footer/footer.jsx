@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, ListGroup, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaInstagram, FaWhatsapp, FaEnvelope, FaTimes } from 'react-icons/fa';
-import LogoImg from '../assets/brand.png';
+import LogoImg from '../../assets/brand.png';
 import './footer.css'
 import { Link } from 'react-router-dom';
 

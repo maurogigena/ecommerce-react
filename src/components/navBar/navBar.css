@@ -47,7 +47,22 @@
     margin-right: 10px;
     position: relative;
 }
-  
+.vaciar-carrito {
+  color: #ffffff;
+  font-size: small;
+  padding: 4px 4px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.vaciar-carrito:hover {
+  color: #ffffff;
+}
+.checkout {
+  font-size: large;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-weight: 600;
+}
 .badge {
     position: absolute;
     top: -10px;

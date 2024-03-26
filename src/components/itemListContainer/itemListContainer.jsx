@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import { useParams } from 'react-router-dom';
-import { productos } from '../data/data.js';
+import { productos } from '../../data/data.js';
 import ItemList from '../itemList/itemList.jsx';
 
 function ItemListContainer() {

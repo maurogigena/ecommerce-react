@@ -2,51 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner'; // Importa el Spinner
+import Spinner from 'react-bootstrap/Spinner';
 import Swal from 'sweetalert2';
-import { productos } from '../data/data';
+import { productos } from '../../data/data';
 import './itemDetail.css';
+import { useCount } from '../hooks/useCount.jsx';
+import { useCart } from '../../context/cartContext.jsx';
 
 function ItemDetailContainer() {
   const { productoId } = useParams();
   const [producto, setProducto] = useState(null);
-  const [contador, setContador] = useState(1);
-  const [cargando, setCargando] = useState(true); // Estado para controlar la carga
+  const [cargando, setCargando] = useState(true);
+
+  const { count, increment, decrement } = useCount(1); // Utiliza el hook useCount
+
+  // Obtener funciones y datos del carrito usando el hook useCart
+  const { addProduct } = useCart();
 
   useEffect(() => {
-    setCargando(true); // Inicia la carga
+    setCargando(true);
     setTimeout(() => {
       const productoEncontrado = productos.find(prod => prod.id.toString() === productoId);
       setProducto(productoEncontrado);
-      setCargando(false); // Finaliza la carga después de 2 segundos
+      setCargando(false);
     }, 2000);
   }, [productoId]);
 
-  const incrementar = () => {
-    setContador(contador + 1);
-  };
-
-  const decrementar = () => {
-    if (contador > 1) {
-      setContador(contador - 1);
-    }
-  };
-
   const agregarAlCarrito = () => {
+    addProduct(producto, count); // Utiliza el estado count del contador
     Swal.fire({
       title: 'Producto agregado',
-      text: `Has agregado ${contador} ${contador > 1 ? 'productos' : 'producto'} al carrito correctamente`,
+      text: `Has agregado ${count} ${count > 1 ? 'productos' : 'producto'} al carrito correctamente`,
       icon: 'success',
       confirmButtonText: 'Ok'
     });
   };
 
   if (cargando) return (
-      <div style={{ textAlign: 'center', marginTop: '20%' }}>
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Cargando...</span>
-        </Spinner>
-      </div>
+    <div style={{ textAlign: 'center', marginTop: '20%' }}>
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Cargando...</span>
+      </Spinner>
+    </div>
   );
 
   if (!producto) return <div>No se encontró el producto</div>;
@@ -71,9 +68,9 @@ function ItemDetailContainer() {
                 {producto.stock > 0 ? 'Hay stock' : 'No hay stock'}
               </Card.Text>
               <div className="d-flex justify-content-between align-items-center mb-3">
-                <Button variant="secondary" size="lg" onClick={decrementar}>-</Button>
-                <span style={{ fontSize: '2rem' }}>{contador}</span>
-                <Button variant="secondary" size="lg" onClick={incrementar}>+</Button>
+                <Button variant="secondary" size="lg" onClick={decrement}>-</Button>
+                <span style={{ fontSize: '2rem' }}>{count}</span>
+                <Button variant="secondary" size="lg" onClick={increment}>+</Button>
               </div>
               <Button variant="primary" size="lg" onClick={agregarAlCarrito}>Agregar al Carrito</Button>
             </Card.Body>

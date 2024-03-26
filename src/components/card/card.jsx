@@ -12,7 +12,7 @@ function ItemCard({ producto }) {
   };
 
   return (
-    <div className='card-container' onClick={handleClick}> {/* Agrega el evento onClick aquí */}
+    <div className='card-container' onClick={handleClick}> 
       <Card className='card' style={{ width: '18rem' }}>
         <Card.Img variant="top" src={`${producto.imagen}`} alt={`${producto.nombre}`} style={{ width: "100%", height: "310px", objectFit: "cover" }} />
         <Card.Body>
