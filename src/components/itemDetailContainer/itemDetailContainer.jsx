@@ -72,7 +72,7 @@ function ItemDetailContainer() {
                 <span style={{ fontSize: '2rem' }}>{count}</span>
                 <Button variant="secondary" size="lg" onClick={increment}>+</Button>
               </div>
-              <Button variant="primary" size="lg" onClick={agregarAlCarrito}>Agregar al Carrito</Button>
+              <Button variant="primary" size="lg" onClick={agregarAlCarrito} disabled={producto.stock <= 0} style={{ backgroundColor: producto.stock > 0 ? '' : 'grey', borderColor: producto.stock > 0 ? '' : '#f8f9fa' }}>Agregar al Carrito</Button>
             </Card.Body>
           </Card>
         </div>
