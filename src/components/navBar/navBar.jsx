@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './navBar.css';
 import { BsCart4, BsPersonFill } from 'react-icons/bs';
 import MenuOffcanvas from './mainMenu.jsx';
-import CartOffcanvas from './cart.jsx';
+import CartOffcanvas from './offCanvasCart.jsx';
 import LoginToast from './loginToast.jsx';
 import AdBar from './adbar.jsx';
 import { CartContext } from '../../context/cartContext.jsx'; // Importa el contexto del carrito
