@@ -5,11 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/footer/Footer.jsx';
-import { CartProvider } from './context/cartContext.jsx'; // Importar CartProvider
+import { CartProvider } from './context/cartContext.jsx'; 
 
 function App() {
   return (
-    <CartProvider> {/* Envolver toda la aplicación con CartProvider */}
+    <CartProvider>
       <BrowserRouter>
           <NavBar />
           <Routes>

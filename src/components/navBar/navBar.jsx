@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import brand from '../../assets/brand.png';
 import { Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,7 @@ import MenuOffcanvas from './mainMenu.jsx';
 import CartOffcanvas from './offCanvasCart.jsx';
 import LoginToast from './loginToast.jsx';
 import AdBar from './adbar.jsx';
-import { CartContext } from '../../context/cartContext.jsx'; // Importa el contexto del carrito
+import { CartContext } from '../../context/cartContext.jsx';
 
 function NavBar() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
