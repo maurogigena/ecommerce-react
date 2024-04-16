@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import { CartContext } from '../../context/cartContext.jsx';
 import './navBar.css';
 import { CartItemList } from '../cartItemList/cartItemList.jsx';
 
-const CartOffcanvas = ({ showCartOffcanvas, handleCartToggle }) => { // eslint-disable-next-line
-  const {} = useContext(CartContext);
+const CartOffcanvas = ({ showCartOffcanvas, handleCartToggle }) => {
   
   return (
     <Offcanvas show={showCartOffcanvas} onHide={handleCartToggle} placement="end">
