@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
+import { getOneProduct } from '../../services/firebase.js';
 import './card.css';
 
-function ItemCard({ producto }) {
-  const navigate = useNavigate(); // Hook para navegar
+function ItemCard({ productId }) {
+  const [producto, setProducto] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
-  // Función para manejar el clic en la Card
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setIsLoading(true);
+      if (productId) {
+        const product = await getOneProduct(productId);
+        setProducto(product);
+      }
+      setIsLoading(false);
+    };
+    fetchProduct();
+  }, [productId]);
+
   const handleClick = () => {
-    navigate(`/producto/${producto.id}`);
+    if (productId) {
+      navigate(`/producto/${productId}`);
+    }
   };
+
+  if (!productId || isLoading || !producto) {
+    return null;
+  }
 
   return (
     <div className='card-container' onClick={handleClick}> 

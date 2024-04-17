@@ -4,32 +4,31 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Swal from 'sweetalert2';
-import { productos } from '../../data/data';
 import './itemDetail.css';
 import { useCount } from '../hooks/useCount.jsx';
 import { useCart } from '../../context/cartContext.jsx';
+import { getOneProduct } from '../../services/firebase.js';  // Importa la función de Firebase
 
 function ItemDetailContainer() {
-  const { productoId } = useParams();
+  const { productoId } = useParams();  // Obtiene el ID del producto desde la URL
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
 
-  const { count, increment, decrement } = useCount(1); // Utiliza el hook useCount
-
-  // Obtener funciones y datos del carrito usando el hook useCart
+  const { count, increment, decrement } = useCount(1);
   const { addProduct } = useCart();
 
   useEffect(() => {
-    setCargando(true);
-    setTimeout(() => {
-      const productoEncontrado = productos.find(prod => prod.id.toString() === productoId);
+    const fetchProduct = async () => {
+      setCargando(true);
+      const productoEncontrado = await getOneProduct(productoId);
       setProducto(productoEncontrado);
       setCargando(false);
-    }, 2000);
+    };
+    fetchProduct();
   }, [productoId]);
 
   const agregarAlCarrito = () => {
-    addProduct(producto, count); // Utiliza el estado count del contador
+    addProduct(producto, count);
     Swal.fire({
       title: 'Producto agregado',
       text: `Has agregado ${count} ${count > 1 ? 'productos' : 'producto'} al carrito correctamente`,
@@ -38,13 +37,15 @@ function ItemDetailContainer() {
     });
   };
 
-  if (cargando) return (
-    <div style={{ textAlign: 'center', marginTop: '20%' }}>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Cargando...</span>
-      </Spinner>
-    </div>
-  );
+  if (cargando) {
+    return (
+      <div style={{ textAlign: 'center', marginTop: '20%' }}>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </Spinner>
+      </div>
+    );
+  }
 
   if (!producto) return <div>No se encontró el producto</div>;
 
@@ -52,7 +53,7 @@ function ItemDetailContainer() {
     <div className="container" style={{ marginTop: '120px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px', marginBottom: '20px' }}>
       <div className="row">
         <div className="img-itemdetail col-lg-6">
-          <img src={producto.imagen} alt="Producto" className="img-fluid" style={{ width: "70%", height: "100%" }} />
+          <img src={producto.imagen} alt={producto.nombre} className="img-fluid" style={{ width: "70%", height: "100%" }} />
         </div>
         <div className="col-lg-6 mt-3 mt-lg-0">
           <Card style={{ maxWidth: '30rem', width: '100%', justifyContent: 'center' }}>

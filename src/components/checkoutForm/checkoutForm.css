@@ -1,0 +1,13 @@
+.form--container {
+    font-family: 'Montserrat', sans-serif;
+    margin: 100px;
+    margin-bottom: 15px;
+}
+.email-title {
+    margin-top: 15px;
+}
+.button-enviar {
+    margin-top: 10px;
+    font-size: large;
+    padding: 4px 25px 4px 25px;
+}

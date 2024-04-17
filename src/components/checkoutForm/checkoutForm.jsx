@@ -1,54 +1,67 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { Form, Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/cartContext.jsx";
 import { createBuyOrder } from "../../services/firebase";
 import "./checkoutForm.css";
 
 export const CheckoutForm = () => {
-	const { cart, cartQuantity, emptyCart } = useContext(CartContext);
-	const [loading, setLoading] = useState(false);
-	const [idOrder, setIdOrder] = useState();
-	const [userData, setUserData] = useState({
-		name: "",
-		email: "",
-		items: "",
-		date: "",
-	});
+  const { cart,cartQuantity, emptyCart } = useContext(CartContext);
+  const [loading, setLoading] = useState(false); // Cambia a true para mostrar el spinner al principio
+  const [idOrder, setIdOrder] = useState();
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    items: "",
+    date: "",
+  });
 
-	const handleChange = (event) => {
-		const inputValue = event.target.value;
-		const inputName = event.target.name;
-		setUserData({ ...userData, [inputName]: inputValue });
-	};
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); // Cambia el estado a falso después de 0.5 segundos
+    }, 500);
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
+    return () => clearTimeout(timer); // Limpia el temporizador cuando se desmonta el componente
+  }, []);
 
-		if (userData.name === "" || userData.email === "") return;
+  const handleChange = (event) => {
+    const inputValue = event.target.value;
+    const inputName = event.target.name;
+    setUserData({ ...userData, [inputName]: inputValue });
+  };
 
-		let order = {
-			name: userData.name,
-			email: userData.email,
-			items: cart,
-			date: new Date(),
-		};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  
+    if (userData.name === "" || userData.email === "" || !cart) return; // Verificar si cart está definido
+  
+    let order = {
+      name: userData.name,
+      email: userData.email,
+      items: cart,
+      date: new Date(),
+    };
+  
+    setLoading(true);
+    createBuyOrder(order)
+      .then((data) => {
+        setIdOrder(data);
+        emptyCart();
+      })
+      .catch((error) => {
+        console.error("Error creating order:", error);
+        // Handle error appropriately, e.g., display a message to the user
+      })
+      .finally(() => {
+        setLoading(false);
+        setUserData({
+          name: "",
+          email: "",
+        });
+      });
+  };
 
-		console.log("Enviando data al backend");
-		console.table(order);
-		setLoading(true);
-		createBuyOrder(order)
-			.then((data) => {
-				setIdOrder(data);
-				emptyCart();
-			})
-			.finally(() => {
-				setLoading(false);
-				setUserData({
-					name: "",
-					email: "",
-				});
-			});
-	};
+	if (loading) return <Spinner />;
 
 	if (idOrder)
 		return (
@@ -58,47 +71,50 @@ export const CheckoutForm = () => {
 			</div>
 		);
 
-	if (cartQuantity === 0)
-		return (
-			<div className="MessageCartEmpty">
-				Carrito Vacio 🤔 <br />{" "}
-				<Link className="MessageCartEmptyButton" to="/">
-					Ir a comprar
-				</Link>
-			</div>
-		);
+    if (cartQuantity === 0) {
+      return (
+        <div className="MessageCartEmpty">
+          Carrito Vacio 🤔 <br />
+          <Link className="MessageCartEmptyButton" to="/">
+            Ir a comprar
+          </Link>
+        </div>
+      );
+    }
 
-	return (
-		<div className="form--container">
-			<form className="form" onSubmit={handleSubmit}>
-				<label className="label">
-					Nombre
-					<input
-						className="input"
-						type="text"
-						placeholder="Ingrese su nombre"
-						name="name"
-						value={userData.name}
-						onChange={handleChange}
-						required
-					/>
-				</label>
-				<label className="label">
-					Email
-					<input
-						className="input"
-						type="email"
-						placeholder="Ingrese su apellido"
-						name="email"
-						value={userData.email}
-						onChange={handleChange}
-						required
-					/>
-				</label>
-				<button type="submit" className="custom-btn btn-3">
-					<span>Enviar</span>
-				</button>
-			</form>
-		</div>
-	);
+  return (
+    <div className="form--container">
+      <Form className="form" onSubmit={handleSubmit}>
+        <Form.Group controlId="formName">
+          <Form.Label>Nombre</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ingrese su nombre"
+            name="name"
+            value={userData.name}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formEmail">
+          <Form.Label className="email-title">Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Ingrese su correo electrónico"
+            name="email"
+            value={userData.email}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Button className="button-enviar" variant="primary" type="submit" disabled={loading}>
+          {loading ? <Spinner animation="border" size="sm" /> : "Enviar"}
+        </Button>
+      </Form>
+    </div>
+  );
 };
+
+export default CheckoutForm;

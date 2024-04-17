@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import { useParams } from 'react-router-dom';
-import { productos } from '../../data/data.js';
+import { getProducts, getProductsByCategory } from '../../services/firebase.js';
 import ItemList from '../itemList/itemList.jsx';
 
 function ItemListContainer() {
@@ -11,26 +11,19 @@ function ItemListContainer() {
   const { idcategory } = useParams();
 
   useEffect(() => {
-    setIsLoading(true); // Asegúrate de que el spinner se muestra al recargar los productos
-    const getProducts = new Promise((resolve) => {
-      setTimeout(() => {
-        let filteredItems;
-        if (idcategory) {
-          // Filtra todos los productos que coincidan con la category
-          filteredItems = productos.filter(product => product.category === idcategory);
-        } else {
-          // Si no hay category, devuelve todos los productos
-          filteredItems = productos;
-        }
-        resolve(filteredItems);
-      }, 1300);
-    });
-
-    getProducts.then((res) => {
-      setItems(res);
+    setIsLoading(true);
+    const fetchProducts = async () => {
+      let products;
+      if (idcategory) {
+        products = await getProductsByCategory(idcategory);
+      } else {
+        products = await getProducts();
+      }
+      setItems(products);
       setIsLoading(false);
-    });
-  }, [idcategory]); 
+    };
+    fetchProducts();
+  }, [idcategory]);
 
   if (isLoading) {
     return (
@@ -44,8 +37,8 @@ function ItemListContainer() {
 
   return (
     <div>
-      <h2 style={{ textAlign: 'center', marginTop: '95px', marginBottom: '20px' }}>
-        {idcategory ? `${idcategory}` : 'Nuestra Colección'}
+      <h2 style={{ textAlign: 'center', marginTop: '95px', marginBottom: '20px', fontWeight:'600' }}>
+        {idcategory ? `${idcategory}` : 'Our Collection'}
       </h2>
       <ItemList productos={items} />
     </div>

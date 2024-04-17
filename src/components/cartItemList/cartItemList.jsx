@@ -26,7 +26,7 @@ export const CartItemList = () => {
             </ListGroup.Item>
           ))}
         </ListGroup>
-        <Card.Text style={{ fontSize: "large" }}>Total de la compra: ${totalCartValue}</Card.Text>
+        <Card.Text style={{ fontSize: "large" }}>Subtotal: ${totalCartValue}</Card.Text>
         <Button style={{ fontSize: "large" }} variant="danger" onClick={emptyCart}>
           Vaciar Carrito
         </Button>

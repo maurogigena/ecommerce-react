@@ -1,22 +1,20 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-
-import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where, doc, getDoc, addDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyCzUgH4akcgenKq-NMrvHKoi94wOklesVU",
-	authDomain: "comision-cb8a2.firebaseapp.com",
-	projectId: "comision-cb8a2",
-	storageBucket: "comision-cb8a2.appspot.com",
-	messagingSenderId: "751256937857",
-	appId: "1:751256937857:web:195755a7efa02547577480",
+  apiKey: "AIzaSyD3l_FSnqvnt6iUZnq-8aCtrQ1Z4gZ6S5M",
+  authDomain: "hood-99.firebaseapp.com",
+  projectId: "hood-99",
+  storageBucket: "hood-99.appspot.com",
+  messagingSenderId: "519478584834",
+  appId: "1:519478584834:web:253c88f2bbba44f93ca91b"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
 
 export const getProducts = async () =>{
     const productsCollectionRef = collection(db,"products");
@@ -40,7 +38,7 @@ export const getProductsByCategory = async (categoryToSearch) =>{
 		return docsData;
 }
 
-export const getOneProducts = async (idToSearch) => {
+export const getOneProduct = async (idToSearch) => {
     const productsCollectionRef = collection(db, "products");
     const productRef = doc(productsCollectionRef, idToSearch);
     const snapshot = await getDoc(productRef);
@@ -49,6 +47,6 @@ export const getOneProducts = async (idToSearch) => {
 
 export const createBuyOrder = async (order) => {
     const ordersCollectionRef = collection(db, "orders");
-    const orderDoc = await addDoc(ordersCollectionRef , order);
-    return orderDoc.id;
-}
+    const orderDocRef = await addDoc(ordersCollectionRef, order);
+    return orderDocRef.id;
+};

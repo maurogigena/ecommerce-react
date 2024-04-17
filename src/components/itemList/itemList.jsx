@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import ItemCard from '../card/card.jsx';
 
 function ItemList({ productos }) {
@@ -7,8 +7,8 @@ function ItemList({ productos }) {
     <Container>
       <Row>
         {productos.map((producto) => (
-          <Col key={producto.id} sm={6} md={4} lg={3}> {/* Utiliza columnas de Bootstrap para mostrar las tarjetas */}
-            <ItemCard producto={producto} /> {/* Renderiza la tarjeta de producto */}
+          <Col key={producto.id} sm={6} md={4} lg={3}>
+            <ItemCard productId={producto.id} />
           </Col>
         ))}
       </Row>

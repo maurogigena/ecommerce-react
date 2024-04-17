@@ -6,7 +6,6 @@ import './navBar.css';
 import { BsCart4, BsPersonFill } from 'react-icons/bs';
 import MenuOffcanvas from './mainMenu.jsx';
 import CartOffcanvas from './offCanvasCart.jsx';
-import LoginToast from './loginToast.jsx';
 import AdBar from './adbar.jsx';
 import { CartContext } from '../../context/cartContext.jsx';
 
@@ -41,9 +40,6 @@ function NavBar() {
         <Navbar.Brand href="/" className="mx-auto">
           <img src={brand} alt="Brand Hood'99." style={{ width: '120px' }} />
         </Navbar.Brand>
-        <div style={{ cursor: 'pointer' }} className='user-icon' onClick={handleLoginToast}>
-          <BsPersonFill size={30} />
-        </div>
         <div className="cart-icon" onClick={handleCartToggle}>
           <BsCart4 size={25} color="white" /> 
           <span className="badge">{cartItemCount}</span>
@@ -51,10 +47,6 @@ function NavBar() {
         <MenuOffcanvas showOffcanvas={showOffcanvas} handleToggle={handleToggle} />
         <CartOffcanvas showCartOffcanvas={showCartOffcanvas} handleCartToggle={handleCartToggle} />
       </Navbar>
-      <LoginToast 
-        showLoginToast={showLoginToast} 
-        handleClose={() => setShowLoginToast(false)}
-      />
     </>
   );
 }
