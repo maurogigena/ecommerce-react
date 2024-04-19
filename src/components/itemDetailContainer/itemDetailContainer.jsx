@@ -53,7 +53,7 @@ function ItemDetailContainer() {
     <div className="container" style={{ marginTop: '120px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px', marginBottom: '20px' }}>
       <div className="row">
         <div className="img-itemdetail col-lg-6">
-          <img src={producto.imagen} alt={producto.nombre} className="img-fluid" style={{ width: "70%", height: "100%" }} />
+          <img src={producto.imagen} alt={producto.nombre} className="img-fluid" style={{ width: "70%", height: "100%", opacity:"1" }} />
         </div>
         <div className="col-lg-6 mt-3 mt-lg-0">
           <Card style={{ maxWidth: '30rem', width: '100%', justifyContent: 'center' }}>

@@ -46,6 +46,7 @@ export const getOneProduct = async (idToSearch) => {
 };
 
 export const createBuyOrder = async (order) => {
+    console.log("LLEGA AL CREATE BUY")
     const ordersCollectionRef = collection(db, "orders");
     const orderDocRef = await addDoc(ordersCollectionRef, order);
     return orderDocRef.id;

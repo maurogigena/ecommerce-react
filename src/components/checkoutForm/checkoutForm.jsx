@@ -6,7 +6,7 @@ import { createBuyOrder } from "../../services/firebase";
 import "./checkoutForm.css";
 
 export const CheckoutForm = () => {
-  const { cart,cartQuantity, emptyCart } = useContext(CartContext);
+  const { cartItems, cartQuantity, emptyCart } = useContext(CartContext);
   const [loading, setLoading] = useState(false); // Cambia a true para mostrar el spinner al principio
   const [idOrder, setIdOrder] = useState();
   const [userData, setUserData] = useState({
@@ -31,14 +31,29 @@ export const CheckoutForm = () => {
   };
 
   const handleSubmit = (event) => {
+
+    if (cartQuantity === 0) {
+      return (
+        <div className="MessageCartEmpty">
+          Carrito Vacio 🤔 <br />
+          <Link className="MessageCartEmptyButton" to="/">
+            Ir a comprar
+          </Link>
+        </div>
+      );
+    }
+
     event.preventDefault();
+
+    console.log("EMPEZAMO---")
+    console.log(cartItems);
   
-    if (userData.name === "" || userData.email === "" || !cart) return; // Verificar si cart está definido
+    if (userData.name === "" || userData.email === "" || !cartItems) return; // Verificar si cart está definido
   
     let order = {
       name: userData.name,
       email: userData.email,
-      items: cart,
+      items: cartItems,
       date: new Date(),
     };
   
@@ -63,25 +78,16 @@ export const CheckoutForm = () => {
 
 	if (loading) return <Spinner />;
 
-	if (idOrder)
-		return (
-			<div className="container--orderid">
+	if (idOrder) {
+    return (
+			<div style={{ marginTop:"100px" }} className="container--orderid">
+        <div className="container--orderid--text">Gracias por tu compra! Hood'99</div>
 				<div className="container--orderid--text">su Orden es</div>
 				<div className="container--orderid--id">{idOrder}</div>
 			</div>
 		);
-
-    if (cartQuantity === 0) {
-      return (
-        <div className="MessageCartEmpty">
-          Carrito Vacio 🤔 <br />
-          <Link className="MessageCartEmptyButton" to="/">
-            Ir a comprar
-          </Link>
-        </div>
-      );
-    }
-
+  }
+  
   return (
     <div className="form--container">
       <Form className="form" onSubmit={handleSubmit}>

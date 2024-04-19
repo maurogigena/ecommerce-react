@@ -3,6 +3,9 @@ import Spinner from 'react-bootstrap/Spinner';
 import { useParams } from 'react-router-dom';
 import { getProducts, getProductsByCategory } from '../../services/firebase.js';
 import ItemList from '../itemList/itemList.jsx';
+import brand from '../../assets/brand.png';
+import bgImg from '../../assets/img-index.jpg';
+import './itemListContainer.css'
 
 function ItemListContainer() {
   const [items, setItems] = useState([]);
@@ -36,8 +39,12 @@ function ItemListContainer() {
   }
 
   return (
-    <div>
-      <h2 style={{ textAlign: 'center', marginTop: '95px', marginBottom: '20px', fontWeight:'600' }}>
+    <div> 
+      <div className="bg-img">
+        <img src={brand} style={{ marginTop:"40px" }} className="brand-img animate__animated animate__fadeIn" alt="Hood'99 Brand." />
+        <img src={bgImg} style={{ width: '100%', opacity: 0.3, marginTop:"80px" }} fluid alt="Foto ilustrativa." />
+      </div>
+      <h2 style={{ textAlign: 'center', marginTop: '30px', marginBottom: '20px', fontWeight:'600' }}>
         {idcategory ? `${idcategory}` : 'Our Collection'}
       </h2>
       <ItemList productos={items} />
