@@ -50,7 +50,7 @@ function ItemDetailContainer() {
   if (!producto) return <div>No se encontró el producto</div>;
 
   return (
-    <div className="container" style={{ marginTop: '120px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px', marginBottom: '20px' }}>
+    <div className="container" style={{ marginTop: '100px', justifyContent: 'center', paddingRight: '25px', paddingLeft: '25px', marginBottom: '20px' }}>
       <div className="row">
         <div className="img-itemdetail col-lg-6">
           <img src={producto.imagen} alt={producto.nombre} className="img-fluid" style={{ width: "70%", height: "100%", opacity:"1" }} />

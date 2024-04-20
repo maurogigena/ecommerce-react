@@ -30,3 +30,10 @@
       z-index: 1;
     }
 }
+button.swal2-cancel.swal2-styled {
+    border-radius: 0%;
+    padding: 10px 23px 10px 23px;
+}
+.swal2-input {
+    padding: 10px 50px;
+}

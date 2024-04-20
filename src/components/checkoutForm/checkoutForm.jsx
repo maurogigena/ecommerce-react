@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Form, Button, Spinner } from "react-bootstrap";
+import { Form, Button, Spinner, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/cartContext.jsx";
 import { createBuyOrder } from "../../services/firebase";
@@ -44,11 +44,8 @@ export const CheckoutForm = () => {
     }
 
     event.preventDefault();
-
-    console.log("EMPEZAMO---")
-    console.log(cartItems);
-  
-    if (userData.name === "" || userData.email === "" || !cartItems) return; // Verificar si cart está definido
+    
+    if (userData.name.trim === "" || userData.email.trim === "" || !cartItems) return; // Verificar si cart está definido
   
     let order = {
       name: userData.name,
@@ -76,17 +73,25 @@ export const CheckoutForm = () => {
       });
   };
 
-	if (loading) return <Spinner />;
+	if (loading) return <Spinner style={{ marginTop: "120px", marginBottom:"50px", display:"flex", justifyContent:"center", alignSelf:"center", textAlign:"center" }} />;
 
 	if (idOrder) {
     return (
-			<div style={{ marginTop:"100px" }} className="container--orderid">
-        <div className="container--orderid--text">Gracias por tu compra! Hood'99</div>
-				<div className="container--orderid--text">su Orden es</div>
-				<div className="container--orderid--id">{idOrder}</div>
-			</div>
-		);
-  }
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '100px'
+      }}>
+        <Card style={{ width: '300px', textAlign: 'center' }} className="container--orderid">
+          <Card.Title className="container--orderid--text">¡Compra exitosa!</Card.Title>
+          <Card.Text className="container--orderid--text">Su número de orden es:</Card.Text>
+          <Card.Text style={{ fontWeight:"900" }} className="container--orderid--id">{idOrder}</Card.Text>
+          <Card.Title className="container--orderid--text">Gracias por tu compra! Hood'99.</Card.Title>
+        </Card>
+      </div>
+    );
+  }  
   
   return (
     <div className="form--container">

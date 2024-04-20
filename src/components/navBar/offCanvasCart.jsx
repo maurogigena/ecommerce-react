@@ -10,7 +10,7 @@ const CartOffcanvas = ({ showCartOffcanvas, handleCartToggle }) => {
         <Offcanvas.Title>Carrito de Compras</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <CartItemList />
+        <CartItemList handleCartToggle={handleCartToggle} /> {/* Aquí se pasa handleCartToggle */}
       </Offcanvas.Body>
     </Offcanvas>
   );

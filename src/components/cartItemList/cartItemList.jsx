@@ -6,8 +6,13 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-export const CartItemList = () => {
+export const CartItemList = ({ handleCartToggle }) => { // Asegúrate de recibir handleCartToggle como prop
   const { cartItems, totalCartValue, emptyCart } = useContext(CartContext);
+
+  // Función para ocultar el Offcanvas
+  const hideOffcanvas = () => {
+    handleCartToggle();
+  };
 
   return (
     <Card style={{ width: '18rem' }}>
@@ -30,7 +35,7 @@ export const CartItemList = () => {
         <Button style={{ fontSize: "large" }} variant="danger" onClick={emptyCart}>
           Vaciar Carrito
         </Button>
-        <Link style={{ fontSize: "large" }} to="/checkout" className="btn btn-success mt-2">
+        <Link style={{ fontSize: "large" }} to="/checkout" className="btn btn-success mt-2" onClick={hideOffcanvas}>
           Terminar Compra
         </Link>
       </Card.Body>

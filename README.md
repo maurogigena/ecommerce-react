@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Mi Proyecto / My Project (HOOD'99)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es un README básico para mi proyecto.
+Es un ecommerce de indumentaria unisex de moda.
+Hay productos de King Of The Kongo, 47Street, The North Face, Nike y Adidas. 
+-
+This is a basic README for my project.
+It's an e-commerce for fashionable unisex clothing.
+There are products from King Of The Kongo, 47Street, The North Face, Nike and Adidas.
 
-## Available Scripts
+## Descripción / Descrption
 
-In the project directory, you can run:
+Respecto al código, la aplicación está creada con *create-react-app*. 
+Contiene un *Context* para el carrito de compras, 
+y está conectado a una base de datos de *firebase* creado por mí para traer los productos del catalogo, 
+que también para enviar datos de los usuarios a la base de datos, por ejemplo el mail de un *nuevo suscriptor* o un usuario que realizó una *nueva compra*.
+*Dato de color: Las imagenes si bien están en el firebase, las almacené en imgbb.com y las importé al firebase en su respectivo  document*
+-
+Regarding the code, the application is created with *create-react-app*.
+Contains a *Context* for the shop cart,
+and it's connected to a *firebase database* created by me to bring the products from the catalog,
+which also to send user data to the database, for example to store the email of a *new subscriber* or a user who made a *new purchase*.
+*Extra data: Although the images are in firebase, I stored them in imgbb.com and imported them into firebase in their respective document*
 
-### `npm start`
+## Mensaje Final / Final message
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Aprendí muchisimas cosas en esta carrera y dejo esta etapa sabiendo lo que quiero para mi futuro.
+Sacando mi costado un poco más soberbio, creo que la aplicación es un 10/10 en lo estético, me encanta cómo quedó visualmente, y admito que quizá en lo funcional le falte una vuelta de tuerca, pero son detalles pequeños.
+Espero que les guste tanto como a mi, y sea una grata experiencia navegarla.
+-
+I learned a lot of things in this career and I leave this stage knowing what I want for my future.
+Taking out my slightly more arrogant side, I think the application is a 10/10 aesthetically, I love how it turned out visually, and I admit that perhaps functionally it lacks a twist, but they are small details.
+I hope you like it as much as I do, and it's a pleasant experience to navigate it.
