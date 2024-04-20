@@ -31,7 +31,6 @@ function ItemListContainer() {
     setTimeout(() => {
       showSubscriptionAlert();
     }, 1600);
-
   }, [idcategory]);
 
   // Function to show subscription alert

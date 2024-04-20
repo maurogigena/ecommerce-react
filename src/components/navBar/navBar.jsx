@@ -3,7 +3,7 @@ import brand from '../../assets/brand.png';
 import { Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navBar.css';
-import { BsCart4, BsPersonFill } from 'react-icons/bs';
+import { BsCart4 } from 'react-icons/bs';
 import MenuOffcanvas from './mainMenu.jsx';
 import CartOffcanvas from './offCanvasCart.jsx';
 import AdBar from './adbar.jsx';
@@ -12,7 +12,6 @@ import { CartContext } from '../../context/cartContext.jsx';
 function NavBar() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showCartOffcanvas, setShowCartOffcanvas] = useState(false);
-  const [showLoginToast, setShowLoginToast] = useState(false);
 
   const { cartItems } = useContext(CartContext); // Obtiene el contexto del carrito
 
@@ -25,11 +24,6 @@ function NavBar() {
 
   const handleToggle = () => {
     setShowOffcanvas(!showOffcanvas);
-  };
-
-  // Función para mostrar el toast de inicio de sesión
-  const handleLoginToast = () => {
-    setShowLoginToast(true);
   };
 
   return (
