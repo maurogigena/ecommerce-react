@@ -22,6 +22,13 @@ and it's connected to a *firebase database* created by me to bring the products 
 which also to send user data to the database, for example to store the email of a *new subscriber* or a user who made a *new purchase*.
 *Extra data: Although the images are in firebase, I stored them in imgbb.com and imported them into firebase in their respective document*
 
+## Tecnologías usadas en este proyecto / Technologies used in this proyect
+
+* ReactJS
+* Javascript
+* HTML
+* CSS
+
 ## Mensaje Final / Final message
 
 Aprendí muchisimas cosas en esta carrera y dejo esta etapa sabiendo lo que quiero para mi futuro.
