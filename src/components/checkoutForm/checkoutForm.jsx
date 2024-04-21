@@ -7,7 +7,7 @@ import "./checkoutForm.css";
 
 export const CheckoutForm = () => {
   const { cartItems, cartQuantity, emptyCart } = useContext(CartContext);
-  const [loading, setLoading] = useState(false); // Cambia a true para mostrar el spinner al principio
+  const [loading, setLoading] = useState(true);  // Inicia con true para mostrar el spinner inmediatamente
   const [idOrder, setIdOrder] = useState();
   const [userData, setUserData] = useState({
     name: "",
@@ -18,10 +18,10 @@ export const CheckoutForm = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false); // Cambia el estado a falso después de 0.5 segundos
-    }, 500);
+      setLoading(false);  // Cambia el estado a false después de 2 segundos
+    }, 2000);
 
-    return () => clearTimeout(timer); // Limpia el temporizador cuando se desmonta el componente
+    return () => clearTimeout(timer);  // Limpia el temporizador cuando se desmonta el componente
   }, []);
 
   const handleChange = (event) => {
@@ -31,6 +31,7 @@ export const CheckoutForm = () => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
 
     if (cartQuantity === 0) {
       return (
@@ -43,17 +44,15 @@ export const CheckoutForm = () => {
       );
     }
 
-    event.preventDefault();
-    
-    if (userData.name.trim === "" || userData.email.trim === "" || !cartItems) return; // Verificar si cart está definido
-  
+    if (userData.name.trim() === "" || userData.email.trim() === "" || !cartItems) return;
+
     let order = {
       name: userData.name,
       email: userData.email,
       items: cartItems,
       date: new Date(),
     };
-  
+
     setLoading(true);
     createBuyOrder(order)
       .then((data) => {
@@ -62,7 +61,6 @@ export const CheckoutForm = () => {
       })
       .catch((error) => {
         console.error("Error creating order:", error);
-        // Handle error appropriately, e.g., display a message to the user
       })
       .finally(() => {
         setLoading(false);
@@ -73,9 +71,15 @@ export const CheckoutForm = () => {
       });
   };
 
-	if (loading) return <Spinner style={{ marginTop: "120px", marginBottom:"50px", display:"flex", justifyContent:"center", alignSelf:"center", textAlign:"center" }} />;
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px', marginBottom:"20px" }}>
+        <Spinner animation="border" variant="dark" />
+      </div>
+    );
+  }
 
-	if (idOrder) {
+  if (idOrder) {
     return (
       <div style={{
         display: 'flex',
@@ -86,18 +90,18 @@ export const CheckoutForm = () => {
         <Card style={{ width: '300px', textAlign: 'center' }} className="container--orderid">
           <Card.Title className="container--orderid--text">¡Compra exitosa!</Card.Title>
           <Card.Text className="container--orderid--text">Su número de orden es:</Card.Text>
-          <Card.Text style={{ fontWeight:"900" }} className="container--orderid--id">{idOrder}</Card.Text>
+          <Card.Text style={{ fontWeight: "900" }} className="container--orderid--id">{idOrder}</Card.Text>
           <Card.Title className="container--orderid--text">Gracias por tu compra! Hood'99.</Card.Title>
         </Card>
       </div>
     );
-  }  
-  
+  }
+
   return (
     <div className="form--container">
       <Form className="form" onSubmit={handleSubmit}>
         <Form.Group controlId="formName">
-          <Form.Label>Nombre</Form.Label>
+          <Form.Label style={{ fontWeight:"900" }}>Nombre y Apellido*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ingrese su nombre"
@@ -108,8 +112,10 @@ export const CheckoutForm = () => {
           />
         </Form.Group>
 
+        <Card.Text style={{ fontSize:"13px" }}>* el apellido es opcional.</Card.Text>
+
         <Form.Group controlId="formEmail">
-          <Form.Label className="email-title">Email</Form.Label>
+          <Form.Label style={{ fontWeight:"900" }} className="email-title">Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="Ingrese su correo electrónico"
@@ -121,7 +127,7 @@ export const CheckoutForm = () => {
         </Form.Group>
 
         <Button className="button-enviar" variant="primary" type="submit" disabled={loading}>
-          {loading ? <Spinner animation="border" size="sm" /> : "Enviar"}
+          Enviar
         </Button>
       </Form>
     </div>

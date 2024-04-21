@@ -37,7 +37,7 @@ export const Checkout = () => {
             <Card style={{ width: '18rem', display: "flex", flexWrap:"wrap", justifyContent:"center"}}>
               <Card.Img variant="top" src={item.imagen} alt={item.nombre} />
               <Card.Body>
-                <Card.Title>{item.nombre}</Card.Title>
+                <Card.Title style={{ fontWeight: "900" }}>{item.nombre}</Card.Title>
                 <Card.Text>
                   Cantidad: {item.quantity}
                 </Card.Text>

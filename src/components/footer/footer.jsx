@@ -3,11 +3,10 @@ import { Container, Row, Col, ListGroup, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaInstagram, FaWhatsapp, FaEnvelope, FaTimes } from 'react-icons/fa';
 import LogoImg from '../../assets/brand.png';
-import './footer.css'
+import './footer.css';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-
   // Estado para controlar la visibilidad del contenido
   const [isVisible, setIsVisible] = useState(false);
 
@@ -46,10 +45,10 @@ const Footer = () => {
         <Col className='col-query' xs={12} md={3}>
           <h5>Contactanos</h5> {/* LAS REDES NO EXISTEN, SON FICTICIAS */}
           <div className="d-flex flex-column">
-            <a className='redes' href="#"><FaInstagram className="my-2" /> @Hood99</a>
-            <a className='redes' href="#"><FaTimes className="my-2" /> @hood99clothes</a>
-            <a className='redes' href="#"><FaWhatsapp className="my-2" /> +1 23 45678910</a>
-            <a className='redes' href="#"><FaEnvelope className="my-2" /> info@hood99.com.ar</a>
+            <span className='redes'><FaInstagram className="my-2" /> @Hood99</span>
+            <span className='redes'><FaTimes className="my-2" /> @hood99clothes</span>
+            <span className='redes'><FaWhatsapp className="my-2" /> +1 23 45678910</span>
+            <span className='redes'><FaEnvelope className="my-2" /> info@hood99.com.ar</span>
           </div>
         </Col>
 

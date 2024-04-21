@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import { useParams } from 'react-router-dom';
 import { getProducts, getProductsByCategory, createSubscriber } from '../../services/firebase.js';
@@ -13,47 +13,10 @@ function ItemListContainer() {
   const [isLoading, setIsLoading] = useState(true);
   const { idcategory } = useParams();
 
-  useEffect(() => {
-    setIsLoading(true);
-    const fetchProducts = async () => {
-      let products;
-      if (idcategory) {
-        products = await getProductsByCategory(idcategory);
-      } else {
-        products = await getProducts();
-      }
-      setItems(products);
-      setIsLoading(false);
-    };
-    fetchProducts();
-
-    // Show subscription alert after 1.6 seconds
-    setTimeout(() => {
-      showSubscriptionAlert();
-    }, 1600);
-  }, [idcategory]);
-
-  // Function to show subscription alert
-  const showSubscriptionAlert = () => {
+  const showSubscriptionForm = useCallback(() => {
     Swal.fire({
-      title: '¿Te gustaría suscribirte a nuestro newsletter?',
-      showCancelButton: true,
-      confirmButtonText: 'Sí',
-      cancelButtonText: 'No',
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        showSubscriptionForm();
-      }
-    });
-  };
-
-  // Function to show subscription form
-  const showSubscriptionForm = () => {
-    Swal.fire({
-      title: 'Suscribite a nuestro Newsletter',
-      html:
-        '<input id="swal-input1" class="swal2-input" placeholder="Email">',
+      title: 'Suscríbete a nuestro Newsletter',
+      html: '<input id="swal-input1" class="swal2-input" placeholder="Email">',
       showCancelButton: true,
       confirmButtonText: 'Suscribirme',
       cancelButtonText: 'Cancelar',
@@ -70,7 +33,45 @@ function ItemListContainer() {
       },
       allowOutsideClick: () => !Swal.isLoading(),
     });
-  };
+  }, []);
+
+  const showSubscriptionAlert = useCallback(() => {
+    Swal.fire({
+      title: '¿Te gustaría suscribirte a nuestro newsletter?',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No / Ya estoy suscrito',
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        showSubscriptionForm();
+      }
+    });
+  }, [showSubscriptionForm]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchProducts = async () => {
+      let products;
+      if (idcategory) {
+        products = await getProductsByCategory(idcategory);
+      } else {
+        products = await getProducts();
+      }
+      setItems(products);
+      setIsLoading(false);
+    };
+    fetchProducts();
+
+    // Show subscription alert only once using localStorage
+    const showAlert = localStorage.getItem('showAlert') !== 'false';
+    if (showAlert) {
+      setTimeout(() => {
+        showSubscriptionAlert();
+        localStorage.setItem('showAlert', 'false'); // Set this flag as false once the alert has been shown
+      }, 1600);
+    }
+  }, [idcategory, showSubscriptionAlert]); // Add dependencies here
 
   if (isLoading) {
     return (
