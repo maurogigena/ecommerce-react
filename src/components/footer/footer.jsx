@@ -44,12 +44,12 @@ const Footer = () => {
 
         <Col className='col-query' xs={12} md={3}>
           <h5>Contactanos</h5> {/* LAS REDES NO EXISTEN, SON FICTICIAS */}
-          <div className="d-flex flex-column">
-            <span className='redes'><FaInstagram className="my-2" /> @Hood99</span>
-            <span className='redes'><FaTimes className="my-2" /> @hood99clothes</span>
-            <span className='redes'><FaWhatsapp className="my-2" /> +1 23 45678910</span>
-            <span className='redes'><FaEnvelope className="my-2" /> info@hood99.com.ar</span>
-          </div>
+          <ListGroup variant="flush">
+            <ListGroup.Item action as={Link} to="/" className="bg-black text-white filtros"><FaInstagram className="my-2" /> @hood99</ListGroup.Item>
+            <ListGroup.Item action as={Link} to="/" className="bg-black text-white filtros"><FaTimes className="my-2" /> @hood99clothes</ListGroup.Item>
+            <ListGroup.Item action as={Link} to="/" className="bg-black text-white filtros"><FaWhatsapp className="my-2" /> +1 23 4567 8910</ListGroup.Item>
+            <ListGroup.Item action as={Link} to="/" className="bg-black text-white filtros"><FaEnvelope className="my-2" /> info@hood99.com.ar</ListGroup.Item>
+          </ListGroup>
         </Col>
 
         <Col className='col-query' xs={12} md={3}>
